@@ -45,10 +45,10 @@ function mUnfocus(jaunsIeraksts) {
   jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
 }
 
-function mClick(dzestIerakstu) {
-  const ieraksts = dzestIerakstu.parentElement;
+function mClick(poga) {
+  const ieraksts = poga.parentElement;
   ieraksts.parentElement.remove();
-  preces.splice(dzestIerakstu.parentElement.id, 1);
+  preces.splice(ieraksts.id, 1);
   localStorage.setItem("preces", JSON.stringify(preces));
 }
 
@@ -59,11 +59,11 @@ function render() {
   for (let i = 0; i < preces.length; i++) {
     let ieraksts = `
         <div class="ieraksts">
-            <div class="teksts" id="${i}">
+            <div class="teksts">
                 <p id="prece">${preces[i].prece}</p>
                 <p id="daudzums">${preces[i].daudzums}</p>
             </div>
-            <div class="poga">
+            <div class="poga" id="${i}">
                 <button type="submit" id="dzestIerakstu" onclick="mClick(this)">X</button>
             </div>
         </div>`;
