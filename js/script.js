@@ -43,6 +43,13 @@ function mUnfocus(jaunsIeraksts) {
     jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
 }
 
+function mClick(dzestIerakstu) {
+    const ieraksts = dzestIerakstu.parentElement;
+    ieraksts.parentElement.remove();
+    preces.splice(dzestIerakstu.parentElement.id, 1);
+    localStorage.setItem("preces", JSON.stringify(preces));
+}
+
 function render() {
     let saraksts = document.getElementById('saraksts');
     saraksts.innerHTML = "";
@@ -50,13 +57,18 @@ function render() {
     for(let i = 0; i < preces.length; i++) {
         let ieraksts = `
         <div class="ieraksts">
-            <p id="prece">${preces[i].prece}</p>
-            <p id="daudzums">${preces[i].daudzums}</p>
+            <div class="teksts" id="${i}">
+                <p id="prece">${preces[i].prece}</p>
+                <p id="daudzums">${preces[i].daudzums}</p>
+            </div>
+            <div class="poga">
+                <button type="submit" id="dzestIerakstu" onclick="mClick(this)">X</button>
+            </div>
         </div>`;
 
         saraksts.innerHTML += ieraksts;
     }
 
-    localStorage.setItem("preces", JSON.stringify(preces))
+    localStorage.setItem("preces", JSON.stringify(preces));
 }
 
