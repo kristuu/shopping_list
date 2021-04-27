@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html lang="lv">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Iepirkumu saraksts</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="lapas-virsraksts">
-        <h1>Iepirkumu saraksts</h1>
+      <h1>Iepirkumu saraksts</h1>
     </div>
     <div id="info">
-        <h2>Lai pievienotu ierakstu, spied «+ JAUNS»</h2>
+      <h2>Lai pievienotu ierakstu, spied «+ JAUNS»</h2>
     </div>
 
     <div id="poga">
-        <button id="jaunsIeraksts" onmouseover="mFocus(this)" onmouseout="mUnfocus(this)" onmousedown="mDown(this)" onmouseup="mUp(this)">+ JAUNS</button>
+      <button
+        id="jaunsIeraksts"
+        onmouseover="mFocus(this)"
+        onmouseout="mUnfocus(this)"
+        onmousedown="mDown(this)"
+        onmouseup="mUp(this)"
+      >
+        + JAUNS
+      </button>
     </div>
 
     <div id="pievienotIerakstu">
-        <form id="forma">
-            <h3>Jauns pirkums</h3>
-            <input type="text" id="pieprasitPreci" placeholder="Prece (max 55 rakstzīmes)">
-            <input type="text" id="pieprasitDaudzumu" placeholder="Daudzums">
-            <button type="submit" id="apstiprinatIerakstu">Pievienot</button>
-        </form>
-
+      <form id="forma">
+        <h3>Jauns pirkums</h3>
+        <input
+          type="text"
+          id="pieprasitPreci"
+          placeholder="Prece (max 55 rakstzīmes)"
+          maxlength="55"
+        />
+        <input
+          type="text"
+          id="pieprasitDaudzumu"
+          placeholder="Daudzums"
+          maxlength="20"
+        />
+        <button type="submit" id="apstiprinatIerakstu">Pievienot</button>
+      </form>
     </div>
 
-    <div id="saraksts">
-    </div>
+    <div id="saraksts"></div>
 
     <script src="js/script.js"></script>
-</body>
+  </body>
 </html>

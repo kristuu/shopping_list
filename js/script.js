@@ -1,61 +1,63 @@
-const pievienotIerakstu = document.getElementById('pievienotIerakstu');
+const pievienotIerakstu = document.getElementById("pievienotIerakstu");
 let preces = [];
 
-window.addEventListener('load', () => {
-    preces = JSON.parse(localStorage.getItem("preces") || "[]");
-    console.log(preces);
-    render();
+window.addEventListener("load", () => {
+  preces = JSON.parse(localStorage.getItem("preces") || "[]");
+  console.log(preces);
+  render();
 });
 
-document.getElementById('jaunsIeraksts').addEventListener('click', () => {
-    pievienotIerakstu.style.display = 'block';
+document.getElementById("jaunsIeraksts").addEventListener("click", () => {
+  pievienotIerakstu.style.display = "block";
+});
 
-})
+document.getElementById("apstiprinatIerakstu").addEventListener("click", () => {
+  pievienotIerakstu.style.display = "none";
 
-document.getElementById('apstiprinatIerakstu').addEventListener('click', () => {
-    pievienotIerakstu.style.display = 'none';
+  let ieraksts = {
+    prece: pieprasitPreci.value,
+    daudzums: pieprasitDaudzumu.value,
+  };
 
-    let ieraksts = {prece: pieprasitPreci.value, daudzums: pieprasitDaudzumu.value};
+  pieprasitPreci.value = "";
+  pieprasitDaudzumu.value = "";
 
-    pieprasitPreci.value = "";
-    pieprasitDaudzumu.value = "";
+  preces.push(ieraksts);
 
-    preces.push(ieraksts);
-
-    render();
-})
+  render();
+});
 
 function mDown(jaunsIeraksts) {
-    jaunsIeraksts.style.backgroundColor = "rgb(0, 0, 0)";
-    jaunsIeraksts.style.color = "rgb(255, 187, 0)";
+  jaunsIeraksts.style.backgroundColor = "rgb(0, 0, 0)";
+  jaunsIeraksts.style.color = "rgb(255, 187, 0)";
 }
 
 function mUp(jaunsIeraksts) {
-    jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
-    jaunsIeraksts.style.color = "rgb(255, 255, 255)";
+  jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
+  jaunsIeraksts.style.color = "rgb(255, 255, 255)";
 }
 
 function mFocus(jaunsIeraksts) {
-    jaunsIeraksts.style.backgroundColor = "rgb(223, 163, 0)";
+  jaunsIeraksts.style.backgroundColor = "rgb(223, 163, 0)";
 }
 
 function mUnfocus(jaunsIeraksts) {
-    jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
+  jaunsIeraksts.style.backgroundColor = "rgb(255, 187, 0)";
 }
 
 function mClick(dzestIerakstu) {
-    const ieraksts = dzestIerakstu.parentElement;
-    ieraksts.parentElement.remove();
-    preces.splice(dzestIerakstu.parentElement.id, 1);
-    localStorage.setItem("preces", JSON.stringify(preces));
+  const ieraksts = dzestIerakstu.parentElement;
+  ieraksts.parentElement.remove();
+  preces.splice(dzestIerakstu.parentElement.id, 1);
+  localStorage.setItem("preces", JSON.stringify(preces));
 }
 
 function render() {
-    let saraksts = document.getElementById('saraksts');
-    saraksts.innerHTML = "";
+  let saraksts = document.getElementById("saraksts");
+  saraksts.innerHTML = "";
 
-    for(let i = 0; i < preces.length; i++) {
-        let ieraksts = `
+  for (let i = 0; i < preces.length; i++) {
+    let ieraksts = `
         <div class="ieraksts">
             <div class="teksts" id="${i}">
                 <p id="prece">${preces[i].prece}</p>
@@ -66,9 +68,8 @@ function render() {
             </div>
         </div>`;
 
-        saraksts.innerHTML += ieraksts;
-    }
+    saraksts.innerHTML += ieraksts;
+  }
 
-    localStorage.setItem("preces", JSON.stringify(preces));
+  localStorage.setItem("preces", JSON.stringify(preces));
 }
-
